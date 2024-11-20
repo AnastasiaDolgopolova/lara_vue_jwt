@@ -88,7 +88,7 @@ export default {
     },
 
     mounted() {
-        console.log(localStorage.getItem('access_token'));
+      //  console.log(localStorage.getItem('access_token'));
     },
 
     methods: {
