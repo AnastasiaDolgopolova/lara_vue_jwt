@@ -20,8 +20,11 @@ export default VueRouter.createRouter ({
             component: () => import('./components/User/RegisterComponent.vue'),
             name: 'user.register'
         },
-
-
+        {
+            path: '/users/personal',
+            component: () => import('./components/User/PersonalComponent.vue'),
+            name: 'user.personal'
+        },
 
     ],
 })

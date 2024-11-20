@@ -22,7 +22,7 @@
 </template>
 
 <script>
-
+import API from "@/api.js";
 export default {
     name: "IndexComponent",
 
@@ -32,11 +32,11 @@ export default {
         }
     },
     mounted() {
-        this.getFruits();
+        this.getFruits()
     },
     methods: {
         getFruits() {
-            axios.get('/api/fruits')
+            API.get('/api/auth/fruits')
                 .then(res => {
                     this.fruits = res.data.data;
                 })

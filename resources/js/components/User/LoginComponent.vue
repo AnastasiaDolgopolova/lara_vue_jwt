@@ -73,6 +73,7 @@ export default {
                    // localStorage.setItem('some_data', JSON.stringify(data)); //for put obj
                    // JSON.parse(localStorage.getItem('some_data')); //for get obj
                    // localStorage.access_token = res.data.access_token;
+                    this.$router.push({name: 'user.personal'});
                 })
         },
     }
