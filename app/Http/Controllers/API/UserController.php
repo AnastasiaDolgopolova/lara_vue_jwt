@@ -27,11 +27,16 @@ class UserController extends Controller
     {
         $data = $request->validated();
         $data['password'] = Hash::make($data['password']);
-        User::firstOrCreate([
-            'email' => $data['email']
-        ], $data);
+        $user = User::where('email', $data['email'])->first();
 
-        return response([]);
+        if($user){
+            return response(['error' => 'User with this email already exists'], 403);
+        }
+
+        $user = User::create($data);
+        $token = auth()->tokenById($user->id);
+
+        return response(['access_token' => $token]);
     }
 
     /**

@@ -65,6 +65,11 @@
                                         </button>
                                     </div>
                                 </div>
+
+                            <div  class="row mb-0">
+                                <div v-if="error" class="text-danger col-md-8 offset-md-4">{{ this.error}}</div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -83,7 +88,8 @@ export default {
             name: null,
             email: null,
             password: null,
-            password_confirmation: null
+            password_confirmation: null,
+            error: null
         }
     },
 
@@ -100,7 +106,11 @@ export default {
                 password_confirmation: this.password_confirmation
             })
                 .then(res => {
-                    console.log(res);
+                    localStorage.setItem('access_token', res.data.access_token);
+                    this.$router.push({name: 'user.personal'});
+                })
+                .catch(error =>{
+                    this.error = error.response.data.error;
                 })
         },
 
