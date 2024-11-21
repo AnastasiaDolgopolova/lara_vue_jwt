@@ -43,6 +43,11 @@
                                         </button>
                                     </div>
                                 </div>
+
+                            <div  class="row mb-0">
+                                <div v-if="error" class="text-danger col-md-8 offset-md-4">{{ this.error}}</div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -59,6 +64,7 @@ export default {
         return {
             email: null,
             password: null,
+            error: null
         }
     },
 
@@ -74,6 +80,9 @@ export default {
                    // JSON.parse(localStorage.getItem('some_data')); //for get obj
                    // localStorage.access_token = res.data.access_token;
                     this.$router.push({name: 'user.personal'});
+                })
+                .catch(error =>{
+                    this.error = error.response.data.error;
                 })
         },
     }
